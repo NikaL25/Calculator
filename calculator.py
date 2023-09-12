@@ -1,10 +1,7 @@
-# Import required packages
 from tkinter import *
-
-# Variable to store the user-entered expression
 user_expression = ''
 
-# Function to store the values entered by the user (numbers and operators)
+
 def press(number):
     global user_expression
     user_expression += str(number)
@@ -13,32 +10,26 @@ def press(number):
 def evaluate_expression():
     try:
         global user_expression
-        # Evaluate the expression
         result = str(eval(user_expression))
         equation.set(result)
-        # Initialize the expression variable
         user_expression = ""
     except:
-        # Display a syntax error message if unable to evaluate the expression
         equation.set("Syntax Error")
         user_expression = ""
-
-# Function to clear the entered expression
+        
 def clear_expression():
     global user_expression
     user_expression = ''
     equation.set('')
 
-# Create the root window
+
 root = Tk()
 root.configure(background="grey")
 root.title('Calculator by codewithcurious.com')
 root.geometry('280x280')
 
-# To store the values entered by the user
 equation = StringVar()
 
-# Entry Box to accept the user's expression (input)
 text_entry_box = Entry(root, textvariable=equation, width=20)
 text_entry_box.grid(columnspan=4, ipadx=100)
 
@@ -52,7 +43,6 @@ buttons = [
     '/', '=', 'Clear'
 ]
 
-# Create and arrange the buttons in the specified format
 row_num, col_num = 2, 0
 for button_text in buttons:
     button = Button(root, text=f' {button_text} ', fg='black', bg='#8f8f8f', height=2, width=7)
@@ -68,5 +58,5 @@ for button_text in buttons:
         col_num = 0
         row_num += 1
 
-# Run the GUI
+
 root.mainloop()
